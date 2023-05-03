@@ -70,8 +70,17 @@ function CadastroUsuario() {
                 
             } catch (error) {
                 console.log(`Error: ${error}`)
-                console.log(error)
-                alert("Erro ao cadastrar o Usuário")
+                toast.error('Erro ao cadastrar usuário', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'colored',
+                    progress: undefined,
+                })
+
             }
         } else {
             toast.error('Dados inconsistentes. Favor verificar as informações de cadastro', {

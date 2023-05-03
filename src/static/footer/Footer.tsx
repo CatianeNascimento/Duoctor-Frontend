@@ -4,19 +4,27 @@ import {Box} from "@mui/material"
 import InstagramIcon from "@material-ui/icons/Instagram";
 import "./Footer.css"
 import { useSelector } from "react-redux";
-import { TokenState } from "../../store/tokens/TokensReducer";
+import { UserState } from "../../store/tokens/TokensReducer";
 
 function Footer() {
-    const token = useSelector<TokenState, TokenState["tokens"]>(
+    const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
     );
     
     return (
         <>
+            {/* <section className="sobre">
+                <div className="colunas-sobre">
+                    <Typography></Typography>
+                </div>
+                <div className="colunas-sobre"></div>
+                <div className="colunas-sobre"></div>
+            </section> */}
+
             <Grid container direction="row" justifyContent="flex-end" alignItems="center">
                 <Grid alignItems="center" item xs={12}>
                     <Box className="redesSociais">
-                        <Box marginTop={20} display="flex" alignItems="center" justifyContent="center">
+                        <Box marginTop={5} display="flex" alignItems="center" justifyContent="center">
                             <Typography variant="h5" align="center" gutterBottom style={{ color: "black" }}>Confira nossa rede social: </Typography>
                         </Box>
                         <Box display="flex" alignItems="center" justifyContent="center">

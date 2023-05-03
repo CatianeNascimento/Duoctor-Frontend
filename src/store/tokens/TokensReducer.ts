@@ -2,7 +2,7 @@ import { Action } from './Actions';
 
 export interface UserState {
     tokens: string,
-    id: string,
+    id: string
 }
 
 const initialState = {
@@ -10,16 +10,20 @@ const initialState = {
     id: ''
 }
 
-export const userReducer = (state: UserState = initialState, action: Action) => {
+export const tokenReducer = (state: UserState = initialState, action: Action) => {
     switch (action.type) {
+
         case "ADD_TOKENS":
             {
                 return { tokens: action.payload, id: state.id }
             }
-        case "ADD_ID":
-            {
-                return { id: action.payload, tokens: state.tokens }
-            }
+
+        case "ADD_ID": {
+            
+            return { id: action.payload, tokens: state.tokens }
+
+        }
+
         default:
             return state
     }

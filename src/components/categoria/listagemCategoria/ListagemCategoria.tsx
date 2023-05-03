@@ -6,7 +6,7 @@ import useLocalStorage from 'react-use-localstorage'
 import { busca } from '../../../services/Services'
 import './ListagemCategoria.css';
 import Categoria from '../../../models/Categoria'
-import { TokenState } from '../../../store/tokens/TokensReducer'
+import { UserState } from '../../../store/tokens/TokensReducer'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
@@ -16,26 +16,26 @@ import { toast } from 'react-toastify'
 function ListagemCategoria() {
 
     const [categorias, setCategoria] = useState<Categoria[]>([])
-    const token = useSelector<TokenState, TokenState["tokens"]>(
+    const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
       );
     let navigate = useNavigate();
 
-    useEffect(() => {
-        if (token == '') {
-          toast.error('Você precisa estar logado', {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            theme: 'colored',
-            progress: undefined,
-        })
-          navigate("/login")
-        }
-      }, [token])
+    // useEffect(() => {
+    //     if (token !== '') {
+    //       toast.error('Você precisa estar logado', {
+    //         position: "top-right",
+    //         autoClose: 2000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: false,
+    //         draggable: false,
+    //         theme: 'colored',
+    //         progress: undefined,
+    //     })
+    //       navigate("/login")
+    //     }
+    //   }, [token])
       
     async function getCategoria() {
         await busca("/categoria", setCategoria, {
@@ -61,7 +61,7 @@ function ListagemCategoria() {
                                     Categoria
                                 </Typography>
                                 <Typography variant="h5" component="h2">{categoria.tipo}</Typography>
-                                <Typography variant="h5" component="h2">{categoria.descricao}</Typography>
+                                {/* <Typography variant="h5" component="h2">{categoria.descricao}</Typography> */}
                             </CardContent>
                             <CardActions>
                                 <Box display="flex" justifyContent="center" mb={1.5}>
